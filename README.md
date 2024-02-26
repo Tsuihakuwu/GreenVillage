@@ -1,7 +1,7 @@
-### Green Village
-## Projet Fil Rouge CDA
+<h1 align="center">Projet Fil Rouge CDA</h1>
+<h2 align="center">Green Village</h2>
 
-# TODO :
+<h2 align="center">TODO :</h2>
 
 - Créer page d'acceuil
     - Design à voir une fois les requêtes testées
