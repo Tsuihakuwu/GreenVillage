@@ -1,7 +1,7 @@
 CREATE TABLE rubrique(
    id INTEGER,
    libelle TEXT,
-   id_1 INTEGER NOT NULL,
+   id_1 INTEGER,
    PRIMARY KEY(id),
    FOREIGN KEY(id_1) REFERENCES rubrique(id)
 );
@@ -19,13 +19,14 @@ CREATE TABLE client(
    reference INTEGER,
    username TEXT,
    password TEXT,
-   type INTEGER,
+   type TEXT,
    tel TEXT,
    coef_vente NUMERIC(15,2)  ,
    rue TEXT,
    cp TEXT,
    ville TEXT,
-   PRIMARY KEY(id)
+   PRIMARY KEY(id),
+   UNIQUE(reference)
 );
 
 CREATE TABLE employe(
@@ -36,10 +37,33 @@ CREATE TABLE employe(
    PRIMARY KEY(id)
 );
 
-CREATE TABLE facture(
+CREATE TABLE commande(
    id INTEGER,
    reference INTEGER,
-   PRIMARY KEY(id)
+   quantite TEXT,
+   reduction NUMERIC(4,2)  ,
+   date_com NUMERIC,
+   mode_paiement INTEGER,
+   reference_facture INTEGER,
+   delai_paiement NUMERIC,
+   status TEXT,
+   id_1 INTEGER,
+   PRIMARY KEY(id),
+   UNIQUE(reference),
+   UNIQUE(reference_facture),
+   FOREIGN KEY(id_1) REFERENCES client(id)
+);
+
+CREATE TABLE livraison(
+   id INTEGER,
+   reference INTEGER,
+   rue TEXT,
+   cp TEXT,
+   ville TEXT,
+   date_livraison TEXT,
+   id_1 INTEGER,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_1) REFERENCES commande(id)
 );
 
 CREATE TABLE produit(
@@ -53,43 +77,11 @@ CREATE TABLE produit(
    tva NUMERIC(15,2)  ,
    active NUMERIC,
    id_1 INTEGER NOT NULL,
+   id_2 INTEGER,
    PRIMARY KEY(id),
-   FOREIGN KEY(id_1) REFERENCES rubrique(id)
-);
-
-CREATE TABLE commande(
-   id INTEGER,
-   reference INTEGER,
-   quantite TEXT,
-   reduction NUMERIC(4,2)  ,
-   date_com NUMERIC,
-   mode_paiement INTEGER,
-   delai_paiement NUMERIC,
-   status TEXT,
-   id_1 INTEGER NOT NULL,
-   id_2 INTEGER NOT NULL,
-   PRIMARY KEY(id),
-   UNIQUE(id_1),
-   FOREIGN KEY(id_1) REFERENCES facture(id),
-   FOREIGN KEY(id_2) REFERENCES client(id)
-);
-
-CREATE TABLE livraison(
-   id INTEGER,
-   reference INTEGER,
-   adresse_livraison TEXT,
-   date_livraison TEXT,
-   id_1 INTEGER NOT NULL,
-   PRIMARY KEY(id),
-   FOREIGN KEY(id_1) REFERENCES commande(id)
-);
-
-CREATE TABLE produit_fournisseur(
-   id INTEGER,
-   id_1 INTEGER,
-   PRIMARY KEY(id, id_1),
-   FOREIGN KEY(id) REFERENCES produit(id),
-   FOREIGN KEY(id_1) REFERENCES fournisseur(id)
+   UNIQUE(reference),
+   FOREIGN KEY(id_1) REFERENCES fournisseur(id),
+   FOREIGN KEY(id_2) REFERENCES rubrique(id)
 );
 
 CREATE TABLE produit_commande(
