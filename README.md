@@ -1,12 +1,13 @@
-<h1 align="center" style="color:grey">Projet Fil Rouge CDA</h1>
-<h2 align="center">Green Village</h2>
+<h1 align="center">Projet Fil Rouge CDA</h1>
+<h2 align="center">🎷 🎸 Green Village 🎸 🎷</h2>
 <br>
-<br>
-<h2>TODO :</h2>
+<p>Création d'un site marchand de vente d'instruments de musiques avec interface client et back-office d'administration</p>
+<br><br>
+<h4>TODO :</h4>
 
 - Créer page d'acceuil
     - Design à voir une fois les requêtes testées
-    - /!\ Mobile first /!\
+    - ⚠️ Mobile first ⚠️
 
 - Page Catalogue
     - Tri par rubrique
@@ -21,7 +22,7 @@
 
 - Création de requêtes
     - Module de gestion des produits
-        - Ajouter produit                           <span style="color: green">OK</span>
+        - ✅ Ajouter produit
         - Supression produit
         - Modification produit
         - Modification arborescence des catégories
