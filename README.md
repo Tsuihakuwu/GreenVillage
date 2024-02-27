@@ -23,12 +23,12 @@
 - Création de requêtes
     - Module de gestion des produits
         - ✅ Ajouter produit
-        - Supression produit
-        - Modification produit
-        - Modification arborescence des catégories
+        - ✅ Supression produit
+        - ✅ Modification produit
+        - ✅ Modification arborescence des catégories
     - Tableau de bord de gestion
-        - Chiffre d'affaire par mois pour une année sélectionnée
-        - Chiffre d'affaire généré pour un fournisseur
+        - ✅ Chiffre d'affaire par mois pour une année sélectionnée
+        - ✅ Chiffre d'affaire généré pour un fournisseur
         - Top 10 des produits les plus commandés sur une année sélectionnée
             - Référence, Nom, Quantité commandée, Fournisseur
         - Top 10 des produits les plus rémunérateurs pour une année sélectionnée
