@@ -1,4 +1,4 @@
-<h1 align="center">Projet Fil Rouge CDA</h1>
+<h1 align="center" style="color:grey">Projet Fil Rouge CDA</h1>
 <h2 align="center">Green Village</h2>
 <br>
 <br>
@@ -18,8 +18,10 @@
     - Gestion vue commercial
     - Gestion vue SAV
     - Gestion vue Comptabilité
+
+- Création de requêtes
     - Module de gestion des produits
-        - Ajouter produit
+        - Ajouter produit                           <span style="color: green">OK</span>
         - Supression produit
         - Modification produit
         - Modification arborescence des catégories

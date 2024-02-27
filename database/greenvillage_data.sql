@@ -1,5 +1,5 @@
 --
--- Fichier généré par SQLiteStudio v3.4.4 sur lun. févr. 26 15:33:10 2024
+-- Fichier généré par SQLiteStudio v3.4.4 sur mar. févr. 27 09:24:04 2024
 --
 -- Encodage texte utilisé : UTF-8
 --
@@ -10,10 +10,10 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS client;
 CREATE TABLE IF NOT EXISTS client(
    id INTEGER,
-   reference INTEGER,
+   reference TEXT,
    username TEXT,
    password TEXT,
-   type TEXT,
+   type NUMERIC,
    tel TEXT,
    coef_vente NUMERIC(15,2)  ,
    rue TEXT,
@@ -24,28 +24,28 @@ CREATE TABLE IF NOT EXISTS client(
    UNIQUE(reference),
    FOREIGN KEY(id_employe) REFERENCES employe(id)
 );
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (1, 20614417, 'Gayle.Klein@gmail.com         ', 'LA905RtXLINXNhn ', 'Particulier   ', '+33489639251 ', 2.31, '7783 Bartell Plaza        ', '285201 ', 'Muellermouth    ', 2);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (2, 39233178, 'Antonia_Schowalter@gmail.com  ', '8CpLITiRR1ydIZs ', 'Particulier   ', '+33975374362 ', 10.21, '17572 Emery Circles       ', '601300 ', 'North Odellland ', 2);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (3, 72831361, 'Bryan.Schamberger@hotmail.com ', 'p3FiTdPQjVvDvW3 ', 'Particulier   ', '+33725914197 ', 38.15, '57282 Predovic Stravenue  ', '974257 ', 'Lake Elsaburgh  ', 2);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (4, 17982237, 'Lucille.Romaguera45@gmail.com ', 'pRqnC1sv2OPNePq ', 'Professionnel ', '+33168435690 ', 15.78, '53793 Hahn Canyon         ', '738035 ', 'Denton          ', 3);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (5, 18251883, 'Enrique19@hotmail.com         ', 'gZxbAqNUf964RwG ', 'Professionnel ', '+33327969376 ', 31.62, '158 Herman Radial         ', '848283 ', 'Goldenton       ', 4);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (6, 61804243, 'Daniel42@yahoo.com            ', 'LtAmp52_hP3oNo0 ', 'Professionnel ', '+33837447734 ', 8.35, '866 Kessler Forks         ', '338195 ', 'Moenstad        ', 5);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (7, 37248993, 'Karla13@yahoo.com             ', 'NMyVtFKSGwZyuhD ', 'Professionnel ', '+33129515785 ', 14.59, '79950 Veda Light          ', '732134 ', 'Port Warren     ', 6);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (8, 90206310, 'Ora_Quigley34@gmail.com       ', 'uTif5Z1uQeAUhkV ', 'Professionnel ', '+33057656275 ', 0.85, '96627 Jacobson Trafficway ', '007805 ', 'Josefort        ', 7);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (9, 4567, 'Leona_Wilkinson@hotmail.com   ', 'w4SrDeoBJ1QraVV ', 'Professionnel ', '+33468101315 ', 36.47, '31650 Luisa Vista         ', '068150 ', 'Berylborough    ', 8);
-INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (10, 89097093, 'Cedric_Paucek@gmail.com       ', 'GgzGsW4fVUXaI0b ', 'Particulier   ', '+33560568282 ', 39.59, '756 Madisen Underpass     ', '100515 ', 'Warrentown      ', 2);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (1, '20614417  ', 'Gayle.Klein@gmail.com         ', 'LA905RtXLINXNhn ', 'Particulier   ', '+33489639251 ', 2.31, '7783 Bartell Plaza        ', '285201 ', 'Muellermouth    ', 2);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (2, '39233178  ', 'Antonia_Schowalter@gmail.com  ', '8CpLITiRR1ydIZs ', 'Particulier   ', '+33975374362 ', 10.21, '17572 Emery Circles       ', '601300 ', 'North Odellland ', 2);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (3, '72831361  ', 'Bryan.Schamberger@hotmail.com ', 'p3FiTdPQjVvDvW3 ', 'Particulier   ', '+33725914197 ', 38.15, '57282 Predovic Stravenue  ', '974257 ', 'Lake Elsaburgh  ', 2);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (4, '17982237  ', 'Lucille.Romaguera45@gmail.com ', 'pRqnC1sv2OPNePq ', 'Professionnel ', '+33168435690 ', 15.78, '53793 Hahn Canyon         ', '738035 ', 'Denton          ', 3);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (5, '18251883  ', 'Enrique19@hotmail.com         ', 'gZxbAqNUf964RwG ', 'Professionnel ', '+33327969376 ', 31.62, '158 Herman Radial         ', '848283 ', 'Goldenton       ', 4);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (6, '61804243  ', 'Daniel42@yahoo.com            ', 'LtAmp52_hP3oNo0 ', 'Professionnel ', '+33837447734 ', 8.35, '866 Kessler Forks         ', '338195 ', 'Moenstad        ', 5);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (7, '37248993  ', 'Karla13@yahoo.com             ', 'NMyVtFKSGwZyuhD ', 'Professionnel ', '+33129515785 ', 14.59, '79950 Veda Light          ', '732134 ', 'Port Warren     ', 6);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (8, '90206310  ', 'Ora_Quigley34@gmail.com       ', 'uTif5Z1uQeAUhkV ', 'Professionnel ', '+33057656275 ', 0.85, '96627 Jacobson Trafficway ', '007805 ', 'Josefort        ', 7);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (9, '00004567  ', 'Leona_Wilkinson@hotmail.com   ', 'w4SrDeoBJ1QraVV ', 'Professionnel ', '+33468101315 ', 36.47, '31650 Luisa Vista         ', '068150 ', 'Berylborough    ', 8);
+INSERT INTO client (id, reference, username, password, type, tel, coef_vente, rue, cp, ville, id_employe) VALUES (10, '89097093  ', 'Cedric_Paucek@gmail.com       ', 'GgzGsW4fVUXaI0b ', 'Particulier   ', '+33560568282 ', 39.59, '756 Madisen Underpass     ', '100515 ', 'Warrentown      ', 2);
 
 -- Tableau : commande
 DROP TABLE IF EXISTS commande;
 CREATE TABLE IF NOT EXISTS commande(
    id INTEGER,
-   reference INTEGER,
+   reference TEXT,
    reduction NUMERIC(4,2)  ,
    date_com NUMERIC,
    mode_paiement INTEGER,
-   reference_facture INTEGER,
+   reference_facture TEXT,
    delai_paiement NUMERIC,
-   status TEXT,
+   status INTEGER,
    facturation_rue TEXT,
    facturation_cp TEXT,
    facturation_ville TEXT,
@@ -58,16 +58,16 @@ CREATE TABLE IF NOT EXISTS commande(
    UNIQUE(reference_facture),
    FOREIGN KEY(id_client) REFERENCES client(id)
 );
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (1, 38884441, 4.66, '26-02-24 ', 'Carte         ', 98285197, '27-02-24       ', 'En cours de livraison ', '90773 Nickolas Brooks    ', '776643         ', 'Catharinefort      ', '13844 Schumm Wells  ', '252934       ', 'Parisiancester        ', 5);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (2, 35546667, 15.39, '26-02-24 ', 'Virement      ', 82929776, '01-03-24       ', 'Livrée                ', '8069 Walter Orchard      ', '478159         ', 'Gulgowskiworth     ', '952 Dante Road      ', '260134       ', 'Idellfield            ', 2);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (3, 39210192, 18.39, '26-02-24 ', 'Carte         ', 28916340, '06-03-24       ', 'En cours de livraison ', '16288 Konopelski Gardens ', '542720         ', 'Fort Peyton        ', '48822 Koelpin Ford  ', '294792       ', 'Lake Una              ', 3);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (4, 83935958, 6.61, '26-02-24 ', 'Chèque        ', 53079468, '06-03-24       ', 'Livrée                ', '584 Godfrey Way          ', '107824         ', 'Colintown          ', '225 Gabriel Union   ', '959327       ', 'North Cassandrecester ', 1);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (5, 89557911, 23.54, '26-02-24 ', 'Carte         ', 92638498, '07-03-24       ', 'En préparation        ', '638 Caitlyn Keys         ', '470651         ', 'Lake Shyannecester ', '243 Hauck Streets   ', '527768       ', 'Richland              ', 4);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (6, 46109176, 20.28, '26-02-24 ', 'Virement      ', 58337644, '09-03-24       ', 'Livrée                ', '28802 Kuhn Brook         ', '531155         ', 'East Queeniestad   ', '52118 Maudie Ports  ', '897057       ', 'South Bell            ', 3);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (7, 70232488, 21.8, '26-02-24 ', 'Virement      ', 33495514, '04-03-24       ', 'En préparation        ', '8565 Hickle Place        ', '534457         ', 'McGlynntown        ', '65451 Judge Pines   ', '398263       ', 'Fort Carlotta         ', 2);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (8, 65962662, 13.79, '26-02-24 ', 'Chèque        ', 32210703, '09-03-24       ', 'En préparation        ', '844 Isaac Expressway     ', '871414         ', 'Miami              ', '798 Cremin Springs  ', '676636       ', 'Klingville            ', 4);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (9, 17721091, 13.42, '26-02-24 ', 'Virement      ', 73510379, '03-03-24       ', 'En préparation        ', '3499 Gideon Meadows      ', '302394         ', 'Port Rodolfoworth  ', '9916 Rolfson Avenue ', '808369       ', 'Fort Zakaryburgh      ', 5);
-INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (10, 23248992, 1.38, '26-02-24 ', 'Virement      ', 18107398, '07-03-24       ', 'En cours de livraison ', '1917 Toy Center          ', '474483         ', 'North Normaworth   ', '4947 Nickolas Cove  ', '170625       ', 'South Amelie          ', 3);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (1, '38884441  ', 4.66, '26-02-24 10:27 ', 1, '98285197          ', '27-02-24       ', 2, '90773 Nickolas Brooks    ', '776643         ', 'Catharinefort      ', '13844 Schumm Wells  ', '252934       ', 'Parisiancester        ', 5);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (2, '35546667  ', 15.39, '26-02-24 10:28 ', 2, '82929776          ', '01-03-24       ', 3, '8069 Walter Orchard      ', '478159         ', 'Gulgowskiworth     ', '952 Dante Road      ', '260134       ', 'Idellfield            ', 2);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (3, '39210192  ', 18.39, '26-02-24 10:29 ', 1, '28916340          ', '06-03-24       ', 2, '16288 Konopelski Gardens ', '542720         ', 'Fort Peyton        ', '48822 Koelpin Ford  ', '294792       ', 'Lake Una              ', 3);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (4, '83935958  ', 6.61, '26-02-24 10:30 ', 3, '53079468          ', '06-03-24       ', 3, '584 Godfrey Way          ', '107824         ', 'Colintown          ', '225 Gabriel Union   ', '959327       ', 'North Cassandrecester ', 1);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (5, '89557911  ', 23.54, '26-02-24 10:31 ', 1, '92638498          ', '07-03-24       ', 1, '638 Caitlyn Keys         ', '470651         ', 'Lake Shyannecester ', '243 Hauck Streets   ', '527768       ', 'Richland              ', 4);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (6, '46109176  ', 20.28, '26-02-24 10:32 ', 2, '58337644          ', '09-03-24       ', 3, '28802 Kuhn Brook         ', '531155         ', 'East Queeniestad   ', '52118 Maudie Ports  ', '897057       ', 'South Bell            ', 3);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (7, '70232488  ', 21.8, '26-02-24 10:33 ', 2, '33495514          ', '04-03-24       ', 1, '8565 Hickle Place        ', '534457         ', 'McGlynntown        ', '65451 Judge Pines   ', '398263       ', 'Fort Carlotta         ', 2);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (8, '65962662  ', 13.79, '26-02-24 10:34 ', 3, '32210703          ', '09-03-24       ', 1, '844 Isaac Expressway     ', '871414         ', 'Miami              ', '798 Cremin Springs  ', '676636       ', 'Klingville            ', 4);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (9, '17721091  ', 13.42, '26-02-24 10:35 ', 2, '73510379          ', '03-03-24       ', 1, '3499 Gideon Meadows      ', '302394         ', 'Port Rodolfoworth  ', '9916 Rolfson Avenue ', '808369       ', 'Fort Zakaryburgh      ', 5);
+INSERT INTO commande (id, reference, reduction, date_com, mode_paiement, reference_facture, delai_paiement, status, facturation_rue, facturation_cp, facturation_ville, livraison_rue, livraison_cp, livraison_ville, id_client) VALUES (10, '23248992  ', 1.38, '26-02-24 10:36 ', 2, '18107398          ', '07-03-24       ', 2, '1917 Toy Center          ', '474483         ', 'North Normaworth   ', '4947 Nickolas Cove  ', '170625       ', 'South Amelie          ', 3);
 
 -- Tableau : employe
 DROP TABLE IF EXISTS employe;
@@ -113,22 +113,23 @@ INSERT INTO fournisseur (id, nom, contact, email) VALUES (10, 'Mraz, Padberg and
 DROP TABLE IF EXISTS livraison;
 CREATE TABLE IF NOT EXISTS livraison(
    id INTEGER,
-   reference INTEGER,
-   date_livraison TEXT,
+   reference TEXT,
+   date_livraison NUMERIC,
    id_commande INTEGER,
    PRIMARY KEY(id),
+   UNIQUE(reference),
    FOREIGN KEY(id_commande) REFERENCES commande(id)
 );
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (1, 68440189, '06-03-24       ', 9);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (2, 85364867, '29-02-24       ', 1);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (3, 79350388, '28-02-24       ', 10);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (4, 57066482, '03-03-24       ', 7);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (5, 92013409, '27-02-24       ', 4);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (6, 20674068, '05-03-24       ', 6);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (7, 24300607, '04-03-24       ', 1);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (8, 67559856, '10-03-24       ', 4);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (9, 36949872, '06-03-24       ', 7);
-INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (10, 28278189, '03-03-24       ', 8);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (1, '68440189  ', '06-03-24 09:00       ', 9);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (2, '85364867  ', '29-02-24 09:10       ', 1);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (3, '79350388  ', '28-02-24 09:01       ', 10);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (4, '57066482  ', '03-03-24 09:02       ', 7);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (5, '92013409  ', '27-02-24 09:03       ', 4);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (6, '20674068  ', '05-03-24 09:04       ', 6);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (7, '24300607  ', '04-03-24 09:05       ', 1);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (8, '67559856  ', '10-03-24 09:06       ', 4);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (9, '36949872  ', '06-03-24 09:07       ', 7);
+INSERT INTO livraison (id, reference, date_livraison, id_commande) VALUES (10, '28278189  ', '03-03-24 09:08       ', 8);
 
 -- Tableau : produit
 DROP TABLE IF EXISTS produit;
@@ -137,7 +138,7 @@ CREATE TABLE IF NOT EXISTS produit(
    reference TEXT,
    libelle TEXT,
    description TEXT,
-   prix_unitaire NUMERIC,
+   prix_unitaire NUMERIC(15,2)  ,
    image TEXT,
    stock INTEGER,
    tva NUMERIC(15,2)  ,

@@ -28,7 +28,7 @@ CREATE TABLE produit(
    reference TEXT,
    libelle TEXT,
    description TEXT,
-   prix_unitaire NUMERIC,
+   prix_unitaire NUMERIC(15,2)  ,
    image TEXT,
    stock INTEGER,
    tva NUMERIC(15,2)  ,
@@ -43,10 +43,10 @@ CREATE TABLE produit(
 
 CREATE TABLE client(
    id INTEGER,
-   reference INTEGER,
+   reference TEXT,
    username TEXT,
    password TEXT,
-   type TEXT,
+   type NUMERIC,
    tel TEXT,
    coef_vente NUMERIC(15,2)  ,
    rue TEXT,
@@ -60,13 +60,13 @@ CREATE TABLE client(
 
 CREATE TABLE commande(
    id INTEGER,
-   reference INTEGER,
+   reference TEXT,
    reduction NUMERIC(4,2)  ,
    date_com NUMERIC,
    mode_paiement INTEGER,
-   reference_facture INTEGER,
+   reference_facture TEXT,
    delai_paiement NUMERIC,
-   status TEXT,
+   status INTEGER,
    facturation_rue TEXT,
    facturation_cp TEXT,
    facturation_ville TEXT,
@@ -82,10 +82,11 @@ CREATE TABLE commande(
 
 CREATE TABLE livraison(
    id INTEGER,
-   reference INTEGER,
-   date_livraison TEXT,
+   reference TEXT,
+   date_livraison NUMERIC,
    id_commande INTEGER,
    PRIMARY KEY(id),
+   UNIQUE(reference),
    FOREIGN KEY(id_commande) REFERENCES commande(id)
 );
 
