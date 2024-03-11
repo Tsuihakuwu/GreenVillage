@@ -29,3 +29,62 @@ WHERE commande.status = 3
 GROUP BY fournisseur.nom
 ORDER BY SUM(produit.prix_unitaire*produit_livraison.quantite_livree) DESC
 LIMIT 3;
+
+SELECT produit.reference AS "Reference produit",
+produit.libelle AS "Nom du produit",
+produit_commande.quantite AS "Quantité commandée",
+fournisseur.nom AS "Nom du fournisseur"
+FROM commande
+JOIN produit_commande ON commande.id = produit_commande.id_commande
+JOIN produit ON produit.id = produit_commande.id_commande
+JOIN fournisseur ON produit.id_fournisseur = fournisseur.id
+WHERE commande.status = 3
+AND STRFTIME('%Y', commande.date_com) = "2024"
+LIMIT 10;
+
+SELECT produit.reference AS "Reference produit",
+produit.libelle AS "Nom du produit",
+ROUND((SUM(((produit.prix_unitaire)*client.coef_vente))-produit.prix_unitaire),2) AS "Marge brute",
+fournisseur.nom AS "Nom du fournisseur",
+client.type
+FROM client
+JOIN commande ON client.id = commande.id_client
+JOIN livraison ON livraison.id_commande = commande.id
+JOIN produit_livraison ON produit_livraison.id_livraison = livraison.id
+JOIN produit ON produit.id = produit_livraison.id_produit
+JOIN fournisseur ON fournisseur.id = produit.id_fournisseur
+WHERE client.type = "true" AND commande.status = 3 AND STRFTIME('%Y', commande.date_com) = "2024"
+GROUP BY produit.reference
+UNION
+SELECT produit.reference AS "Reference produit",
+produit.libelle AS "Nom du produit",
+ROUND((SUM(((produit.prix_unitaire*produit.tva)*client.coef_vente))-produit.prix_unitaire),2) AS "Marge brute",
+fournisseur.nom AS "Nom du fournisseur",
+client.type
+FROM client
+JOIN commande ON client.id = commande.id_client
+JOIN livraison ON livraison.id_commande = commande.id
+JOIN produit_livraison ON produit_livraison.id_livraison = livraison.id
+JOIN produit ON produit.id = produit_livraison.id_produit
+JOIN fournisseur ON fournisseur.id = produit.id_fournisseur
+WHERE client.type = "false" AND commande.status = 3 AND STRFTIME('%Y', commande.date_com) = "2024"
+GROUP BY produit.reference
+ORDER BY "Marge brute" DESC
+
+
+SELECT client.reference AS "Référence client", client.username AS "Nom d'utilisateur", client.type AS "Type client",
+ROUND(SUM(((produit.prix_unitaire*produit.tva)*client.coef_vente))) AS "Chiffre d'affaire généré",
+COUNT(commande.reference) AS "Nombre de commandes" FROM commande
+JOIN client ON client.id = commande.id_client
+JOIN produit_commande ON commande.id = produit_commande.id_commande
+JOIN produit ON produit_commande.id_produit = produit.id
+WHERE id_client = client.id
+GROUP BY client.id
+ORDER BY "Chiffre d'affaire généré" DESC
+
+SELECT client.type AS "Type client", ROUND(SUM(((produit.prix_unitaire*produit.tva)*client.coef_vente))) AS "Chiffre d'affaire généré" FROM client
+JOIN commande ON client.id = commande.id_client
+JOIN produit_commande ON commande.id = produit_commande.id_commande
+JOIN produit ON produit.id = produit_commande.id_produit
+GROUP BY client.type
+ORDER BY "Chiffre d'affaire généré" DESC

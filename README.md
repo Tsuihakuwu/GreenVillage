@@ -5,8 +5,40 @@
 <br><br>
 <h4>TODO :</h4>
 
+
+<h5>Préparation, documentation et design :</h5>
+
+- Base de données
+    - ✅ Dictionnaire des données
+    - ✅ MCD
+    - ✅ Dummy data pour tests SQL
+
+- Création de requêtes
+    - Module de gestion des produits
+        - ✅ Ajouter produit
+        - ✅ Supression produit
+        - ✅ Modification produit
+        - ✅ Modification arborescence des catégories
+    - Tableau de bord de gestion
+        - ✅ Chiffre d'affaire par mois pour une année sélectionnée
+        - ✅ Chiffre d'affaire généré pour un fournisseur
+        - ✅ Top 10 des produits les plus commandés sur une année sélectionnée (Référence, Nom, Quantité commandée, Fournisseur)
+        - ✅ Top 10 des produits les plus rémunérateurs pour une année sélectionnée (Référence, Nom, Marge, Fournisseur)
+        - ✅ Top 10 des clients en nombre de commande ou en chiffre d'affaire
+        - ✅ Répartition du chiffre d'affaires par type de client
+        - ✅ Nombre de commandes en cours de livraison
+
+- Création maquette
+    - ✅ Compte éducation Figma
+    - Définir ce qui apparaitra sur la page d'acceuil
+    - Design Mobile
+    - Design browser
+
+
+
+<h5>Dev :</h5>
+
 - Créer page d'acceuil
-    - Design à voir une fois les requêtes testées
     - ⚠️ Mobile first ⚠️
 
 - Page Catalogue
@@ -20,24 +52,10 @@
     - Gestion vue SAV
     - Gestion vue Comptabilité
 
-- Création de requêtes
-    - Module de gestion des produits
-        - ✅ Ajouter produit
-        - ✅ Supression produit
-        - ✅ Modification produit
-        - ✅ Modification arborescence des catégories
-    - Tableau de bord de gestion
-        - ✅ Chiffre d'affaire par mois pour une année sélectionnée
-        - ✅ Chiffre d'affaire généré pour un fournisseur
-        - Top 10 des produits les plus commandés sur une année sélectionnée
-            - Référence, Nom, Quantité commandée, Fournisseur
-        - Top 10 des produits les plus rémunérateurs pour une année sélectionnée
-            - Référence, Nom, Marge, Fournisseur
-        - Top 10 des clients en nombre de commande ou en chiffre d'affaire
-        - Répartition du chiffre d'affaires par type de client
-
 - Connexion Utilisateur
     - Inscription nouvel utilisateur
     - Connexion/Déconnexion
+    - Accès catalogue
     - Gestion panier avec validation créant une entrée commande
     - Visualisation des anciennes commandes
+    - Visualisation profil
