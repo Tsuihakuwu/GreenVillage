@@ -28,6 +28,10 @@
         - ✅ Répartition du chiffre d'affaires par type de client
         - ✅ Nombre de commandes en cours de livraison
 
+- Sauvegarde de la base de données
+    - ✅ Création d'un script Powershell
+    - Tâche CRON
+
 - Création maquette
     - ✅ Compte éducation Figma
     - Définir ce qui apparaitra sur la page d'acceuil
