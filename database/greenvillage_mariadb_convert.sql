@@ -89,14 +89,14 @@ CREATE TABLE IF NOT EXISTS `commande` (
 
 INSERT INTO `commande` (`id`, `reference`, `reduction`, `date_com`, `mode_paiement`, `reference_facture`, `delai_paiement`, `status`, `facturation_rue`, `facturation_cp`, `facturation_ville`, `livraison_rue`, `livraison_cp`, `livraison_ville`, `id_client`) VALUES
 (1, '38884441  ', 4.66, '2024-02-26 10:27:12', 1, '98285197          ', '27-02-24       ', 3, '90773 Nickolas Brooks    ', '776643         ', 'Catharinefort      ', '13844 Schumm Wells  ', '252934       ', 'Parisiancester        ', 1),
-(2, '35546667  ', 15.39, '2024-02-26 10:28:12', 2, '82929776          ', '01-03-24       ', 3, '8069 Walter Orchard      ', '478159         ', 'Gulgowskiworth     ', '952 Dante Road      ', '260134       ', 'Idellfield            ', 2),
-(3, '39210192  ', 18.39, '2024-02-26 10:29:12', 1, '28916340          ', '06-03-24       ', 3, '16288 Konopelski Gardens ', '542720         ', 'Fort Peyton        ', '48822 Koelpin Ford  ', '294792       ', 'Lake Una              ', 3),
+(2, '35546667  ', 15.39, '2024-02-26 10:28:12', 2, '82929776          ', '01-03-24       ', 1, '8069 Walter Orchard      ', '478159         ', 'Gulgowskiworth     ', '952 Dante Road      ', '260134       ', 'Idellfield            ', 2),
+(3, '39210192  ', 18.39, '2024-02-26 10:29:12', 1, '28916340          ', '06-03-24       ', 2, '16288 Konopelski Gardens ', '542720         ', 'Fort Peyton        ', '48822 Koelpin Ford  ', '294792       ', 'Lake Una              ', 3),
 (4, '83935958  ', 6.61, '2024-02-26 10:30:12', 3, '53079468          ', '06-03-24       ', 3, '584 Godfrey Way          ', '107824         ', 'Colintown          ', '225 Gabriel Union   ', '959327       ', 'North Cassandrecester ', 4),
-(5, '89557911  ', 23.54, '2024-02-26 10:31:12', 1, '92638498          ', '07-03-24       ', 3, '638 Caitlyn Keys         ', '470651         ', 'Lake Shyannecester ', '243 Hauck Streets   ', '527768       ', 'Richland              ', 5),
+(5, '89557911  ', 23.54, '2024-02-26 10:31:12', 1, '92638498          ', '07-03-24       ', 2, '638 Caitlyn Keys         ', '470651         ', 'Lake Shyannecester ', '243 Hauck Streets   ', '527768       ', 'Richland              ', 5),
 (6, '46109176  ', 20.28, '2024-02-26 10:32:12', 2, '58337644          ', '09-03-24       ', 3, '28802 Kuhn Brook         ', '531155         ', 'East Queeniestad   ', '52118 Maudie Ports  ', '897057       ', 'South Bell            ', 6),
-(7, '70232488  ', 21.80, '2024-02-26 10:33:12', 2, '33495514          ', '04-03-24       ', 3, '8565 Hickle Place        ', '534457         ', 'McGlynntown        ', '65451 Judge Pines   ', '398263       ', 'Fort Carlotta         ', 7),
-(8, '65962662  ', 13.79, '2024-02-26 10:34:12', 3, '32210703          ', '09-03-24       ', 3, '844 Isaac Expressway     ', '871414         ', 'Miami              ', '798 Cremin Springs  ', '676636       ', 'Klingville            ', 8),
-(9, '17721091  ', 13.42, '2024-02-26 10:35:12', 2, '73510379          ', '03-03-24       ', 3, '3499 Gideon Meadows      ', '302394         ', 'Port Rodolfoworth  ', '9916 Rolfson Avenue ', '808369       ', 'Fort Zakaryburgh      ', 9),
+(7, '70232488  ', 21.80, '2024-02-26 10:33:12', 2, '33495514          ', '04-03-24       ', 1, '8565 Hickle Place        ', '534457         ', 'McGlynntown        ', '65451 Judge Pines   ', '398263       ', 'Fort Carlotta         ', 7),
+(8, '65962662  ', 13.79, '2024-02-26 10:34:12', 3, '32210703          ', '09-03-24       ', 2, '844 Isaac Expressway     ', '871414         ', 'Miami              ', '798 Cremin Springs  ', '676636       ', 'Klingville            ', 8),
+(9, '17721091  ', 13.42, '2024-02-26 10:35:12', 2, '73510379          ', '03-03-24       ', 4, '3499 Gideon Meadows      ', '302394         ', 'Port Rodolfoworth  ', '9916 Rolfson Avenue ', '808369       ', 'Fort Zakaryburgh      ', 9),
 (10, '23248992  ', 1.38, '2024-02-26 10:36:12', 2, '18107398          ', '07-03-24       ', 3, '1917 Toy Center          ', '474483         ', 'North Normaworth   ', '4947 Nickolas Cove  ', '170625       ', 'South Amelie          ', 10);
 
 -- --------------------------------------------------------

@@ -32,12 +32,19 @@
     - ✅ Création d'un script Powershell
     - Tâche CRON
 
+- Composants d’accès
+    - ✅ Création d’une procédure stockée qui sélectionne les commandes non soldées (en cours de livraison)
+    - ✅ Création d’une procédure stockée qui renvoie le délai moyen entre la date de commande et la date de facturation.
+    - ✅ Création d’une vue permettant d’afficher uniquement les clients professionnels
+    - ✅ Création d’une vue permettant d’afficher la jointure produit/fournisseur
+    - ✅ Création d’une vue permettant d’afficher la jointure produit/catégorie
+
+
 - Création maquette
     - ✅ Compte éducation Figma
     - Définir ce qui apparaitra sur la page d'acceuil
     - Design Mobile
     - Design browser
-
 
 
 <h5>Dev :</h5>
@@ -49,6 +56,7 @@
     - Tri par rubrique
     - Tri par sous-rubrique
     - Barre de recherche
+    - Filtre latéral
     
 - Connexion back-office
     - Gestion vue superadmin avec possibilité de switch différents rôles pour tests
