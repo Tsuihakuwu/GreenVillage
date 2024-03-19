@@ -1,0 +1,104 @@
+class Client {
+	id
+	reference
+	username
+	password
+	type
+	tel
+	coef_vente
+	rue
+	cp
+	ville
+	**commercial**
+	**client**
+}
+
+class Commande {
+	id
+	reference
+	reduction
+	date_commande
+	mode_paiement
+	reference_facture
+	date_facture
+	delai_paiement
+	status
+	facturation_rue
+	facturation_cp
+	facturation_ville
+	livraison_rue
+	livraison_cp
+	livraison_ville
+	**client**
+	**livraisons**
+	**produits**
+}
+
+class Employe {
+	id
+	username
+	password
+	role
+	**clients**
+}
+
+class Fournisseur {
+	id
+	nom
+	contact
+	email
+	**produits**
+}
+
+class Livraison {
+	id
+	reference
+	date_livraison
+	**commande**
+	**produits**
+}
+
+class Produit {
+	id
+	reference
+	libelle
+	description
+	prix_unitaire
+	image
+	stock
+	tva
+	active
+	**fournisseur**
+	**rubrique**
+	**commande**
+	**livraison**
+}
+
+class Rubrique {
+	id
+	libelle
+	image
+	**produit**
+	**sous_rubrique**
+}
+
+Client "*"--"1" Employe
+Client "1"--"*" Commande
+Commande "*"--"1" Client
+Commande "1"--"*" Livraison
+Commande "*"--"*" Produit
+Employe "1"--"*" Client
+Fournisseur "1"--"*" Produit
+Livraison "*"--"1" Commande
+Livraison "*"--"*" Produit
+Produit "*"--"1" Fournisseur
+Produit "*"--"1" Rubrique
+Produit "*"--"*" Commande
+Produit "*"--"*" Livraison
+Rubrique "1"--"*" Produit
+Rubrique "*"--"1" Rubrique
+
+
+hide methods
+hide circle
+

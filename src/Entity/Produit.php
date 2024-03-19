@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
@@ -36,6 +38,24 @@ class Produit
 
     #[ORM\Column(type: 'boolean')]
     private $active;
+
+    #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'produits')]
+    private $fournisseur;
+
+    #[ORM\ManyToOne(targetEntity: Rubrique::class, inversedBy: 'produit')]
+    private $rubrique;
+
+    #[ORM\ManyToMany(targetEntity: Commande::class, inversedBy: 'produits')]
+    private $commande;
+
+    #[ORM\ManyToMany(targetEntity: Livraison::class, inversedBy: 'produits')]
+    private $livraison;
+
+    public function __construct()
+    {
+        $this->commande = new ArrayCollection();
+        $this->livraison = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -134,6 +154,78 @@ class Produit
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getFournisseur(): ?Fournisseur
+    {
+        return $this->fournisseur;
+    }
+
+    public function setFournisseur(?Fournisseur $fournisseur): self
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    public function getRubrique(): ?Rubrique
+    {
+        return $this->rubrique;
+    }
+
+    public function setRubrique(?Rubrique $rubrique): self
+    {
+        $this->rubrique = $rubrique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommande(): Collection
+    {
+        return $this->commande;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commande->contains($commande)) {
+            $this->commande[] = $commande;
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        $this->commande->removeElement($commande);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Livraison>
+     */
+    public function getLivraison(): Collection
+    {
+        return $this->livraison;
+    }
+
+    public function addLivraison(Livraison $livraison): self
+    {
+        if (!$this->livraison->contains($livraison)) {
+            $this->livraison[] = $livraison;
+        }
+
+        return $this;
+    }
+
+    public function removeLivraison(Livraison $livraison): self
+    {
+        $this->livraison->removeElement($livraison);
 
         return $this;
     }

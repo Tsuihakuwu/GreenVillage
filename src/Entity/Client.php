@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
@@ -39,6 +41,18 @@ class Client
 
     #[ORM\Column(type: 'string', length: 255)]
     private $ville;
+
+    #[ORM\ManyToOne(targetEntity: Employe::class, inversedBy: 'clients')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $commercial;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Commande::class)]
+    private $client;
+
+    public function __construct()
+    {
+        $this->client = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -149,6 +163,48 @@ class Client
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getCommercial(): ?Employe
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?Employe $commercial): self
+    {
+        $this->commercial = $commercial;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getClient(): Collection
+    {
+        return $this->client;
+    }
+
+    public function addClient(Commande $client): self
+    {
+        if (!$this->client->contains($client)) {
+            $this->client[] = $client;
+            $client->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Commande $client): self
+    {
+        if ($this->client->removeElement($client)) {
+            // set the owning side to null (unless already changed)
+            if ($client->getClient() === $this) {
+                $client->setClient(null);
+            }
+        }
 
         return $this;
     }

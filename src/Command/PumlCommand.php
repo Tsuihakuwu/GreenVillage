@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Command;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -16,35 +16,23 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class PumlCommand extends Command
 {
+    private $manager;
+
+    public function __construct(EntityManagerInterface $manager) {
+
+        $this->manager = $manager;
+        parent::__construct();
+    }
+
+
     protected function configure(): void
     {
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-
-        function getDirContents($dir, &$results = array()) {
-            $files = scandir($dir);
-
-            foreach ($files as $value) {
-                $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
-                if (!is_dir($path)) {
-                    if (is_file($path) && pathinfo($path, PATHINFO_EXTENSION)=="php") {
-                        $results[] = $path;
-                    }
-                } else if ($value != "." && $value != "..") {
-                    getDirContents($path, $results);
-                    // $results[] = $path;
-                }
-            }
-
-            return $results;
-        }
-
-        foreach (getDirContents('./src/Entity') as $value) {
-            require ($value);
-            
-        }
+        // Load all entities classes
+        $this->manager->getMetadataFactory()->getAllMetadata();
 
         $entities = [];
         $graph = [];
@@ -53,42 +41,44 @@ class PumlCommand extends Command
             $entity_name = "";
             $reflector = new \ReflectionClass($value);
             $attr = $reflector->getAttributes();  
-            foreach ($attr as $a) {
-                // echo "" . $reflector->getShortName() . "\n";
-                if ($a->getName() == "Doctrine\ORM\Mapping\Entity") {
-                    $entity_name = $reflector->getShortName();    
-                }
-            }  
-            $properties = [];
-            $props = $reflector->getProperties();  
-            foreach ($props as $p) {
-                // echo "**** " . $p->getName() . "\n";
-                // if ($p->getName() == "Doctrine\ORM\Mapping\Entity") {
-                    // $entities[] = $name;
-                // }
-                $p_attrs = $p->getAttributes();  
-                foreach ($p_attrs as $p_a) {
-                    // echo ">>>>>>>> " . $p_a->getName() . "\n";
-                    if ($p_a->getName() == "Doctrine\ORM\Mapping\Column") {
-                        $properties[] = $p->getName();
-                    }
-                    // $last = explode("\\",$p_a->getName());
-                    @$last = end ((explode("\\",$p_a->getName())));
-                    if (in_array($last, ["OneToMany", "ManyToOne", "ManyToMany", "OneToOne"])) {
-                        foreach($p_a->getArguments() as $arg_k => $arg_v) {
-                            if ($arg_k == "targetEntity") {
-                                // echo ">>>>>>>>>>>> $arg_v\n";
-                                $graph[] = [$reflector->getShortName(), @end ((explode("\\",$arg_v))), $last];
+            // Get entity's short name
+            $entity_name = array_reduce($attr, fn($previous,$a) => $a->getName()=="Doctrine\ORM\Mapping\Entity"?$previous.$reflector->getShortName():$previous);
+            if ($entity_name) {
+
+                $properties = [];
+                $props = $reflector->getProperties();  
+                foreach ($props as $p) {
+                    // echo "**** " . $p->getName() . "\n";
+                    // if ($p->getName() == "Doctrine\ORM\Mapping\Entity") {
+                        // $entities[] = $name;
+                        // }
+                        $p_attrs = $p->getAttributes();  
+                        foreach ($p_attrs as $p_a) {
+                            // echo ">>>>>>>> " . $p_a->getName() . "\n";
+                            if ($p_a->getName() == "Doctrine\ORM\Mapping\Column") {
+                                $properties[] = $p->getName();
                             }
-                        }
-                        $properties[] = "**" . $p->getName() . "**";
+                            // $last = explode("\\",$p_a->getName());
+                            @$last = end ((explode("\\",$p_a->getName())));
+                            if (in_array($last, ["OneToMany", "ManyToOne", "ManyToMany", "OneToOne"])) {
+                                foreach($p_a->getArguments() as $arg_k => $arg_v) {
+                                    if ($arg_k == "targetEntity") {
+                                        // echo ">>>>>>>>>>>> $arg_v\n";
+                                        $graph[] = [$reflector->getShortName(), @end ((explode("\\",$arg_v))), $last];
+                                    }
+                                }
+                                $properties[] = "**" . $p->getName() . "**";
+                            }
+                        }  
                     }
+                    $entities[$entity_name] = $properties;
                 }  
-            }
-            if ($entity_name!="") $entities[$entity_name] = $properties;
-            
+                
         } 
 
+        // var_dump($graph);
+
+        // Generate puml data
         $data = "";
         foreach ($entities as $key => $props) {
             $data .= "class $key {\n";
@@ -110,7 +100,7 @@ class PumlCommand extends Command
         }
 
         $data.= "\n\nhide methods\nhide circle\n\n";
-        // file_put_contents("./puml/index.puml", $data);
+        file_put_contents("./puml/index.puml", $data);
 
         $data_url = encodep($data);
 
@@ -122,13 +112,13 @@ class PumlCommand extends Command
         if (!file_exists('puml/')) {
             mkdir('puml');
         }
-        
 
         system($curl_cmd);
 
         return Command::SUCCESS;
     }
 }
+
 
 
 function encodep($text) {
