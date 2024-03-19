@@ -42,9 +42,11 @@
 
 - Création maquette
     - ✅ Compte éducation Figma
-    - Définir ce qui apparaitra sur la page d'acceuil
-    - Design Mobile
-    - Design browser
+    - ✅ Définir ce qui apparaitra sur la page d'acceuil
+    - ✅ Design Mobile
+    - ✅ Design browser
+    - ✅ Repertorier et créer toutes les pages nécessaires
+    - Modification page panier sous forme de liste avec vignettes
 
 
 <h5>Dev :</h5>
@@ -56,7 +58,7 @@
     - Tri par rubrique
     - Tri par sous-rubrique
     - Barre de recherche
-    - Filtre latéral
+    - Filtre latéral et/ou fil d'ariane
     
 - Connexion back-office
     - Gestion vue superadmin avec possibilité de switch différents rôles pour tests
