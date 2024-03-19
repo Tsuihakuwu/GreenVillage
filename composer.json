@@ -67,7 +67,8 @@
             "php bin/console d:d:d --if-exists --force",
             "php bin/console d:d:c",
             "php bin/console d:s:u --force --complete",
-            "php bin/console d:f:l --append"
+            "php bin/console d:f:l --append",
+            "php bin/console make:puml"
         ]
     },
     "conflict": {
