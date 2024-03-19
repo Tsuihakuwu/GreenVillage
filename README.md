@@ -48,8 +48,11 @@
     - ✅ Repertorier et créer toutes les pages nécessaires
     - Modification page panier sous forme de liste avec vignettes
 
-
 <h5>Dev :</h5>
+
+- Config Docker > MariaDB / Symfony
+- Création entités Symfony
+- Création Fixtures
 
 - Créer page d'acceuil
     - ⚠️ Mobile first ⚠️
