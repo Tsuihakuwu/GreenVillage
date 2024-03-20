@@ -82,21 +82,13 @@ class Rubrique {
 	**sous_rubrique**
 }
 
-Client "*"--"1" Employe
 Client "1"--"*" Commande
-Commande "*"--"1" Client
 Commande "1"--"*" Livraison
 Commande "*"--"*" Produit
 Employe "1"--"*" Client
 Fournisseur "1"--"*" Produit
-Livraison "*"--"1" Commande
 Livraison "*"--"*" Produit
-Produit "*"--"1" Fournisseur
-Produit "*"--"1" Rubrique
-Produit "*"--"*" Commande
-Produit "*"--"*" Livraison
 Rubrique "1"--"*" Produit
-Rubrique "*"--"1" Rubrique
 
 
 hide methods

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: "Kadwa", Calibri, Tahoma, sans-serif;
+}
+
+.wraper {
+    overflow: hidden;
+    position: relative;
+}
+.bg {
+    opacity: 0.25;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
