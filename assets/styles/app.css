@@ -5,14 +5,40 @@
 body {
     font-family: "Kadwa", Calibri, Tahoma, sans-serif;
 }
-
 .wraper {
     overflow: hidden;
     position: relative;
 }
 .bg {
-    opacity: 0.25;
     position: fixed;
-    left: 0;
-    top: 0;
+    left:0;
+    top:0;
+    background: url("../../public/img/theme_v/background.jpg") no-repeat center center;
+}
+.content {
+    position: relative;
+}
+.bgnav {
+    background: url("../../public/img/theme_v/banner.jpg") no-repeat center center;
+}
+ 
+.link_e{
+    display: block;
+    color: white;
+    text-decoration: none;
+    position: relative;
+}  
+.link_e::after{
+    content: "";
+    background: white;
+    mix-blend-mode: exclusion;
+    width: calc(100% + 20px);
+    height: 0;
+    position: absolute;
+    bottom: -4px;
+    left: -10px;
+      transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.link_e:hover::after{
+      height: calc(100% + 8px)
 }

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<h1 class="flex justify-center w-full font-koulen text-2xl">Bienvenue sur Green Village !</h1>
+	<img src="{{ asset(image_dir ~ 'home/promotion_banner.png') }}" alt="Green Village Promotion" class="flex justify-center w-full">
+	<p class="flex font-koulen justify-center text-4xl w-full my-5">NOS PRODUITS LES PLUS POPULAIRES</p>
+	<img src="{{ asset(image_dir ~ 'home/top_seller.png') }}" alt="Green Village Produit populaires" class="flex justify-center w-full">
+	<div class="flex w-full my-5">
+		<div class="pr-5">
+			<p class="flex font-koulen justify-center text-2xl">VOS AVIS COMPTENT !!</p>
+			<img src="{{ asset(image_dir ~ 'home/avis_commande.png') }}" alt="Green Village Avis commandes">
+		</div>
+		<img src="{{ asset(image_dir ~ 'home/option_paiement.png') }}" alt="Green Village Options de paiement" class="flex w-2/4 pl-5">
+	</div>
+	<h2 class="flex justify-center w-full font-kadwa font-bold mt-10">Bienvenue chez Green Village, votre destination en ligne pour tous vos besoins musicaux !</h2>
+	<p class="flex text-center justify-center font-kadwa mx-10 mb-5">Découvrez notre vaste sélection d'instruments de musique de qualité, d'accessoires essentiels et de produits inspirants. Que vous soyez un musicien professionnel ou un débutant passionné, nous avons tout ce dont vous avez besoin pour exprimer votre créativité et vivre pleinement votre passion pour la musique. Explorez notre site dès maintenant et laissez vous inspirer par notre sélection soigneusement choisie, notre service clientèle exceptionnel et notre engagement envers votre satisfaction musicale. Chez Green Village, la musique est notre passion, et nous sommes là pour vous aider à la faire résonner dans tous les aspects de votre vie.</p>
+	<h2 class="flex justify-center w-full font-kadwa font-bold mt-10">Votre satisfaction musicale est notre priorité absolue !</h2>
+	<p class="flex text-center justify-center font-kadwa mx-10 mb-5">Nous sommes dédiés à vous fournir une expérience d'achat exceptionnelle, des produits de qualité supérieure et un service clientèle hors pair. Que vous soyez à la recherche de votre premier instrument ou que vous souhaitiez améliorer votre équipement existant, nous sommes là pour vous guider à chaque étape du chemin. Parce que chez Green Village, notre plus grande satisfaction est de vous voir exprimer votre passion musicale avec confiance et bonheur. Découvrez dès maintenant notre sélection inspirante et laissez nous vous aider à trouver l'instrument parfait pour vous !</p>
+	<div class="flex w-full my-5">
+		<img src="{{ asset(image_dir ~ 'home/catalogue.png') }}" alt="Catalogue Green Village" class="flex w-2/4 pr-5">
+		<div class="flex flex-col justify-center pl-5 w-2/4">
+			<p class="flex font-koulen text-center justify-center text-2xl w-full">OFFRES ET VENTES FLASH
+				<br>
+				NE RATEZ RIEN - VIVEZ VOTRE PASSION</p>
+			<div class="mb-6">
+				<label for="email" class="block mb-2 text-sm font-medium text-center mt-5">Inscription Newsletter</label>
+				<input type="email" id="email" class="border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5" placeholder="john.doe@greenvillage.com" />
+			</div>
+		</div>
+	</div>
+{% endblock %}

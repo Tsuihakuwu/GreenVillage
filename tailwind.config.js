@@ -5,7 +5,12 @@ module.exports = {
     "./templates/**/*.html.twig",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'kadwa': ['"Kadwa"'],
+        'koulen': ['"Koulen"'],
+      },
+    },
   },
   plugins: [],
 }
