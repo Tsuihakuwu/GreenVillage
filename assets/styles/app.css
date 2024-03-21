@@ -5,16 +5,6 @@
 body {
     font-family: "Kadwa", Calibri, Tahoma, sans-serif;
 }
-.wraper {
-    overflow: hidden;
-    position: relative;
-}
-.bg {
-    position: fixed;
-    left:0;
-    top:0;
-    background: url("../../public/img/theme_v/background.jpg") no-repeat center center;
-}
 .content {
     position: relative;
 }
@@ -27,7 +17,7 @@ body {
     color: white;
     text-decoration: none;
     position: relative;
-}  
+}
 .link_e::after{
     content: "";
     background: white;

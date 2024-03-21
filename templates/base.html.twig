@@ -20,89 +20,85 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div class="wraper">
-			<img class="bg opacity-10" src="{{asset(image_dir ~ 'theme_v/background.jpg')}}" alt="green_village_background">
-			<div class="content">
-
-				<header class="text-gray-50">
-					<nav class="bgnav flex justify-between mix-blend-difference my-5 relative">
-						<a href="{{ path('app_home') }}"><img src="{{asset(image_dir ~ 'theme_v/logo_transparent.png')}}" alt="Green Village Logo" class="absolute size-60 -top-6 start-10 h-auto"></a>
-						<ul class="flex justify-between font-koulen md:text-4xl sm:mt-0 md:my-10 md:py-3 w-8/12">
-							<li>
-								<a href="{{ path('app_home') }}" class="me-4 md:me-6 link_e"><p class="underline">&nbsp&nbsp&nbsp&nbspAccueil</p></a>
-							</li>
-							<li>
-								<a href="#" class="me-4 md:me-6 link_e"><p class="underline">&nbsp&nbsp&nbsp&nbspCatalogue</p></a>
-							</li>
-							<li>
-								<a href="#" class="me-4 md:me-6 link_e"><p class="underline">&nbsp&nbsp&nbsp&nbspContact</p></a>
-							</li>
-							<li>
-								<a href="#" class="me-4 md:me-6 link_e"><p class="underline">&nbsp&nbsp&nbsp&nbspConnexion</p></a>
-							</li>
-						</ul>
-					</nav>
-				</header>
-
-				<main class="mx-5 my-5 mt-10">
-
-					{% block body %}{% endblock %}
-
-				</main>
-
-				<footer class="bgnav text-gray-50 bottom-0 left-0 z-20 w-full p-4 border-t shadow md:p-5 mix-blend-difference">
-					<ul class="md:mb-5 md:flex md:items-center md:justify-around flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
+		<div class="overflow-x-hidden bg-cover bg-bottom bg-no-repeat bg-gray-50" style="background-image:url('{{ asset(image_dir ~ 'theme_v/background2.png') }}')">
+			<header class="text-gray-5 mix-blend-hard-light">
+				<nav class="bgnav flex justify-between my-5 relative">
+					<a href="{{ path('app_home') }}"><img src="{{asset(image_dir ~ 'theme_v/logo_transparent.png')}}" alt="Green Village Logo" class="absolute size-60 -top-6 start-10 h-auto"></a>
+					<ul class="flex justify-between font-koulen md:text-4xl sm:mt-0 md:my-10 md:py-3 w-8/12">
 						<li>
-							<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_instagram.png') }}" alt="Green Village Instagram" class="socials size-10 h-auto max-w-full link_e"></a>
+							<a href="{{ path('app_home') }}" class="me-4 md:me-6 link_e">
+								<p class="underline">&nbsp&nbsp&nbsp&nbspAccueil</p>
+							</a>
 						</li>
 						<li>
-							<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_pinterest.png') }}" alt="Green Village Pinterest" class="socials size-10 h-auto max-w-full link_e"></a>
+							<a href="#" class="me-4 md:me-6 link_e">
+								<p class="underline">&nbsp&nbsp&nbsp&nbspCatalogue</p>
+							</a>
 						</li>
 						<li>
-							<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_x.png') }}" alt="Green Village x" class="socials size-10 h-auto max-w-full link_e"></a>
+							<a href="#" class="me-4 md:me-6 link_e">
+								<p class="underline">&nbsp&nbsp&nbsp&nbspContact</p>
+							</a>
 						</li>
 						<li>
-							<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_youtube.png') }}" alt="Green Village Youtube" class="socials size-10 h-auto max-w-full link_e"></a>
-						</li>
-						<li>
-							<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_facebook.png') }}" alt="Green Village Facebook" class="socials size-10 h-auto max-w-full link_e"></a>
-						</li>
-						<li>
-							<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_linkedin.png') }}" alt="Green Village Linkedin" class="socials size-10 h-auto max-w-full link_e"></a>
+							<a href="#" class="me-4 md:me-6 link_e">
+								<p class="underline">&nbsp&nbsp&nbsp&nbspConnexion</p>
+							</a>
 						</li>
 					</ul>
-					<span class="md:mb-5 md:flex md:items-center md:justify-center text-sm sm:text-center w-full font-bold">© 2024 Green Village Inc. Tout droits réservés.
-						<br>
-						contact@greenvillage.com
-						<br>
-						Tél : +33 3 35 55 12 34
-						<br>
-						GreenVillage - 123 Rue de la Musica 12345 Villeverte
-					</span>
-					<ul class="md:flex md:items-center md:justify-around flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
-						<li>
-							<a href="{{ path('app_legal') }}" class="me-4 md:me-6 link_e hover:underline">Mentions légales</a>
-						</li>
-						<li>
-							<a href="{{ path('app_cgv') }}" class="me-4 md:me-6 link_e hover:underline">Conditions générales de vente</a>
-						</li>
-						<li>
-							<a href="{{ path('app_confidentialite') }}" class="me-4 md:me-6 link_e hover:underline">Politique de confidentialité</a>
-						</li>
-						<li>
-							<a href="{{ path('app_conditions') }}" class="me-4 md:me-6 link_e hover:underline">Conditions d'utilisation</a>
-						</li>
-					</ul>
-				</footer>
-
-			</div>
+				</nav>
+			</header>
+			<main class="mx-5 my-5 mt-10">{% block body %}{% endblock %}</main>
+			<footer class="bgnav text-gray-50 bottom-0 left-0 z-20 w-full p-4 shadow md:p-5 mix-blend-hard-light">
+				<ul class="md:mb-5 md:flex md:items-center md:justify-around flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
+					<li>
+						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_instagram.png') }}" alt="Green Village Instagram" class="socials size-10 h-auto max-w-full link_e"></a>
+					</li>
+					<li>
+						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_pinterest.png') }}" alt="Green Village Pinterest" class="socials size-10 h-auto max-w-full link_e"></a>
+					</li>
+					<li>
+						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_x.png') }}" alt="Green Village x" class="socials size-10 h-auto max-w-full link_e"></a>
+					</li>
+					<li>
+						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_youtube.png') }}" alt="Green Village Youtube" class="socials size-10 h-auto max-w-full link_e"></a>
+					</li>
+					<li>
+						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_facebook.png') }}" alt="Green Village Facebook" class="socials size-10 h-auto max-w-full link_e"></a>
+					</li>
+					<li>
+						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_linkedin.png') }}" alt="Green Village Linkedin" class="socials size-10 h-auto max-w-full link_e"></a>
+					</li>
+				</ul>
+				<span class="md:mb-5 md:flex md:items-center md:justify-center text-sm sm:text-center w-full font-bold">© 2024 Green Village Inc. Tout droits réservés.
+					<br>
+					contact@greenvillage.com
+					<br>
+					Tél : +33 3 35 55 12 34
+					<br>
+					GreenVillage - 123 Rue de la Musica 12345 Villeverte
+				</span>
+				<ul class="md:flex md:items-center md:justify-around flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
+					<li>
+						<a href="{{ path('app_legal') }}" class="me-4 md:me-6 link_e hover:underline">Mentions légales</a>
+					</li>
+					<li>
+						<a href="{{ path('app_cgv') }}" class="me-4 md:me-6 link_e hover:underline">Conditions générales de vente</a>
+					</li>
+					<li>
+						<a href="{{ path('app_confidentialite') }}" class="me-4 md:me-6 link_e hover:underline">Politique de confidentialité</a>
+					</li>
+					<li>
+						<a href="{{ path('app_conditions') }}" class="me-4 md:me-6 link_e hover:underline">Conditions d'utilisation</a>
+					</li>
+				</ul>
+			</footer>
 		</div>
-
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-			<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-		{% endblock %}
-	</body>
-</html>
+			{% block javascripts %}
+				{{ encore_entry_script_tags('app') }}
+				<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+				<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+			{% endblock %}
+		</body>
+	</html>
