@@ -5,9 +5,6 @@
 body {
     font-family: "Kadwa", Calibri, Tahoma, sans-serif;
 }
-.content {
-    position: relative;
-}
 .bgnav {
     background: url("../../public/img/theme_v/banner.jpg") no-repeat center center;
 }
