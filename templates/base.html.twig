@@ -21,27 +21,27 @@
 	</head>
 	<body>
 		<div class="overflow-x-hidden bg-cover bg-bottom bg-no-repeat bg-gray-50" style="background-image:url('{{ asset(image_dir ~ 'theme_v/background2.png') }}')">
-			<header class="text-gray-5 mix-blend-hard-light">
-				<nav class="bgnav flex justify-between my-5 relative">
-					<a href="{{ path('app_home') }}"><img src="{{asset(image_dir ~ 'theme_v/logo_transparent.png')}}" alt="Green Village Logo" class="absolute size-60 -top-6 start-10 h-auto"></a>
-					<ul class="flex justify-between font-koulen md:text-4xl sm:mt-0 md:my-10 md:py-3 w-8/12">
+			<header>
+				<a href="{{ path('app_home') }}"><img src="{{asset(image_dir ~ 'theme_v/logo_transparent.png')}}" alt="Green Village Logo" class="absolute size-60 top-0 start-10 h-auto z-50"></a>
+				<nav class="bgnav flex justify-between my-5 relative mix-blend-hard-light text-gray-5">
+					<ul class="flex justify-end font-koulen md:text-4xl sm:mt-0 md:my-10 md:py-3 w-full">
 						<li>
-							<a href="{{ path('app_home') }}" class="me-4 md:me-6 link_e">
+							<a href="{{ path('app_home') }}" class="me-4 md:me-40 link_e">
 								<p class="underline">&nbsp&nbsp&nbsp&nbspAccueil</p>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="me-4 md:me-6 link_e">
+							<a href="#" class="me-4 md:me-40 link_e">
 								<p class="underline">&nbsp&nbsp&nbsp&nbspCatalogue</p>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="me-4 md:me-6 link_e">
+							<a href="#" class="me-4 md:me-40 link_e">
 								<p class="underline">&nbsp&nbsp&nbsp&nbspContact</p>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="me-4 md:me-6 link_e">
+							<a href="#" class="me-4 md:me-10 link_e">
 								<p class="underline">&nbsp&nbsp&nbsp&nbspConnexion</p>
 							</a>
 						</li>
@@ -70,7 +70,7 @@
 						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_linkedin.png') }}" alt="Green Village Linkedin" class="socials size-10 h-auto max-w-full link_e"></a>
 					</li>
 				</ul>
-				<span class="md:mb-5 md:flex md:items-center md:justify-center text-sm sm:text-center w-full font-bold">© 2024 Green Village Inc. Tout droits réservés.
+				<span class="md:mb-5 md:flex md:items-center md:justify-center text-sm sm:text-center w-full font-bold mix-blend-hard-light">© 2024 Green Village Inc. Tout droits réservés.
 					<br>
 					contact@greenvillage.com
 					<br>
@@ -80,16 +80,16 @@
 				</span>
 				<ul class="md:flex md:items-center md:justify-around flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
 					<li>
-						<a href="{{ path('app_legal') }}" class="me-4 md:me-6 link_e hover:underline">Mentions légales</a>
+						<a href="{{ path('app_legal') }}" class="me-4 md:me-6 hover:underline">Mentions légales</a>
 					</li>
 					<li>
-						<a href="{{ path('app_cgv') }}" class="me-4 md:me-6 link_e hover:underline">Conditions générales de vente</a>
+						<a href="{{ path('app_cgv') }}" class="me-4 md:me-6 hover:underline">Conditions générales de vente</a>
 					</li>
 					<li>
-						<a href="{{ path('app_confidentialite') }}" class="me-4 md:me-6 link_e hover:underline">Politique de confidentialité</a>
+						<a href="{{ path('app_confidentialite') }}" class="me-4 md:me-6 hover:underline">Politique de confidentialité</a>
 					</li>
 					<li>
-						<a href="{{ path('app_conditions') }}" class="me-4 md:me-6 link_e hover:underline">Conditions d'utilisation</a>
+						<a href="{{ path('app_conditions') }}" class="me-4 md:me-6 hover:underline">Conditions d'utilisation</a>
 					</li>
 				</ul>
 			</footer>
