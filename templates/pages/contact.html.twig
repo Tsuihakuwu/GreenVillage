@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<h1 class="flex justify-center w-full font-koulen text-2xl">Formulaire de contact</h1>
+	<div class="flex w-full my-5 place-content-center">
+		{{ form_start(form) }}
+		<div class="my-3">
+			{{ form_errors(form) }}
+		</div>
+		<div class="my-3">
+			{{ form_label(form.objet, "Objet :") }}
+			{{ form_widget(form.objet, {'attr': {'class': 'border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5'} }) }}
+			{{ form_errors(form.objet) }}
+		</div>
+		<div class="my-3">
+			{{ form_label(form.email, "Mail :") }}
+			{{ form_widget(form.email, {'attr': {'class': 'border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5'} }) }}
+			{{ form_errors(form.email) }}
+		</div>
+		<div class="my-3">
+			{{ form_label(form.message, "Message :") }}
+			{{ form_widget(form.message, {'attr': {'class': 'border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5'} }) }}
+			{{ form_errors(form.message) }}
+		</div>
+		<div class="mt-5">
+			{{ form_widget(form.save, {'attr': {'class': 'border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5'} }) }}
+		</div>
+		{{ form_end(form) }}
+	</div>
+	<div class="my-10">
+		<h2 class="text-center font-bold md:mb-2">Nos coordonnées :</h2>
+		<p class="md:mb-5 text-center">contact@greenvillage.com<br>Tél : +33 3 35 55 12 34<br>GreenVillage - 123 Rue de la Musica 12345 Villeverte</p>
+	</div>
+    <div class="mt-10">
+        <h2 class="flex justify-center w-full font-koulen text-2xl">NOTRE MAGASIN</h2>
+        <div class="flex justify-center">
+            <img src="{{asset(image_dir ~ 'theme_v/google_maps.png')}}" alt="Green Village Plan magasin" class="rounded-lg max-w-fit w-full h-auto mt-5">
+        </div>
+    </div>
+{% endblock %}

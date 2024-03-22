@@ -3,8 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Green Village -
-			{% endblock %}
+			Green Village - {% block title %}{% endblock %}
 		</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +19,7 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div class="overflow-x-hidden bg-cover bg-bottom bg-no-repeat bg-gray-50" style="background-image:url('{{ asset(image_dir ~ 'theme_v/background2.png') }}')">
+		<div class="overflow-x-hidden bg-cover bg-bottom bg-no-repeat bg-gray-50 absolute inset-0" style="background-image:url('{{ asset(image_dir ~ 'theme_v/background2.png') }}')">
 			<header>
 				<a href="{{ path('app_home') }}"><img src="{{asset(image_dir ~ 'theme_v/logo_transparent.png')}}" alt="Green Village Logo" class="absolute size-60 top-0 start-10 h-auto z-50"></a>
 				<nav class="bgnav flex justify-between my-5 relative mix-blend-hard-light text-gray-5">
@@ -36,7 +35,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#" class="me-4 md:me-40 link_e">
+							<a href="{{ path('app_contact') }}" class="me-4 md:me-40 link_e">
 								<p class="underline">&nbsp&nbsp&nbsp&nbspContact</p>
 							</a>
 						</li>
@@ -49,7 +48,7 @@
 				</nav>
 			</header>
 			<main class="mx-5 my-5 mt-10">{% block body %}{% endblock %}</main>
-			<footer class="bgnav text-gray-50 bottom-0 left-0 z-20 w-full p-4 shadow md:p-5 mix-blend-hard-light">
+			<footer class="bgnav text-gray-50 sticky top-[100vh] bottom-0 left-0 w-full p-4 shadow md:p-5 mix-blend-hard-light">
 				<ul class="md:mb-5 md:flex md:items-center md:justify-around flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
 					<li>
 						<a href="#"><img src="{{ asset(image_dir ~ 'theme_v/socials/socials_instagram.png') }}" alt="Green Village Instagram" class="socials size-10 h-auto max-w-full link_e"></a>
@@ -98,7 +97,6 @@
 				{{ encore_entry_script_tags('app') }}
 				<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 				<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 			{% endblock %}
 		</body>
 	</html>
