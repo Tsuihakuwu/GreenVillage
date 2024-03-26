@@ -11,6 +11,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
+        // $this->addFlash('notice', 'Hello world');
+        
         return $this->render('pages/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);

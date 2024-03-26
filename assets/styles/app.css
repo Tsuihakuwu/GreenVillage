@@ -6,7 +6,10 @@ body {
     font-family: "Kadwa", Calibri, Tahoma, sans-serif;
 }
 .bgnav {
-    background: url("../../public/img/theme_v/banner.jpg") no-repeat center center;
+    background: url("../../public/img/theme_v/banner.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
 }
  
 .link_e{

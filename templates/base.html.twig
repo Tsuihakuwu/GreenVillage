@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			Green Village - {% block title %}{% endblock %}
+			Green Village -
+			{% block title %}{% endblock %}
 		</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,6 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&family=Koulen&display=swap" rel="stylesheet">
 		{% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 	</head>
@@ -25,7 +25,7 @@
 				<a href="{{ path('app_home') }}"><img src="{{asset(image_dir ~ 'theme_v/logo_transparent.png')}}" alt="Green Village Logo" class="absolute size-60 top-0 start-10 h-auto z-50"></a>
 				<nav class="bgnav flex justify-between my-5 relative mix-blend-hard-light text-gray-5">
 					<ul class="flex justify-end font-koulen md:text-4xl sm:mt-0 md:my-10 md:py-3 w-full">
-						<li>
+						<li {% if app.request.get('_route') == 'app_home' %} class="mix-blend-difference"{% endif %}>
 							<a href="{{ path('app_home') }}" class="me-4 md:me-40 link_e">
 								<p class="underline">&nbsp&nbsp&nbsp&nbspAccueil</p>
 							</a>
@@ -35,20 +35,47 @@
 								<p class="underline">&nbsp&nbsp&nbsp&nbspCatalogue</p>
 							</a>
 						</li>
-						<li>
+						<li {% if app.request.get('_route') == 'app_contact' %} class="mix-blend-difference"{% endif %}>
 							<a href="{{ path('app_contact') }}" class="me-4 md:me-40 link_e">
 								<p class="underline">&nbsp&nbsp&nbsp&nbspContact</p>
 							</a>
 						</li>
-						<li>
-							<a href="{{ path('app_login') }}" class="me-4 md:me-10 link_e">
-								<p class="underline">&nbsp&nbsp&nbsp&nbspConnexion</p>
-							</a>
-						</li>
+						{% if app.user %}
+							<li>
+								<a href="#" class="me-4 md:me-40 link_e">
+									<p class="underline">&nbsp&nbsp&nbsp&nbspPanier</p>
+								</a>
+							</li>
+							<li {% if app.request.get('_route') == 'app_profil' %} class="mix-blend-difference"{% endif %}>
+								<a href="{{ path('app_profil') }}" class="me-4 md:me-40 link_e">
+									<p class="underline">&nbsp&nbsp&nbsp&nbspMon profil</p>
+								</a>
+							</li>
+							<li>
+								<a href="{{ path('app_logout') }}" class="me-4 md:me-10 link_e">
+									<p class="underline">&nbsp&nbsp&nbsp&nbspDeconnexion</p>
+								</a>
+							</li>
+						{% else %}
+							<li {% if app.request.get('_route') == 'app_login' %} class="mix-blend-difference"{% endif %}>
+								<a href="{{ path('app_login') }}" class="me-4 md:me-10 link_e">
+									<p class="underline">&nbsp&nbsp&nbsp&nbspConnexion</p>
+								</a>
+							</li>
+						{% endif %}
 					</ul>
 				</nav>
 			</header>
-			<main class="mx-5 my-5 mt-10">{% block body %}{% endblock %}</main>
+			<main class="mx-5 my-5 mt-10">
+				{% for message in app.session.flashBag.get('success') %}
+					<div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 text-center" role="alert">
+						<span class="font-medium">
+							{{ message }}
+						</span>
+					</div>
+				{% endfor %}
+				{% block body %}{% endblock %}
+			</main>
 			<footer class="bgnav text-gray-50 sticky top-[100vh] bottom-0 left-0 w-full p-4 shadow md:p-5 mix-blend-hard-light">
 				<ul class="md:mb-5 md:flex md:items-center md:justify-around flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
 					<li>
@@ -93,12 +120,10 @@
 					</li>
 				</ul>
 			</footer>
-		</div>
-			{% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-				{{ encore_entry_script_tags('app') }}
-				<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-			{% endblock %}
 		</body>
-	</html>
+	</body>
+</html></div>{% block javascripts %}
+{{ encore_entry_script_tags('app') }}
+{{ encore_entry_script_tags('app') }}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>{% endblock %}</body></html>
