@@ -21,16 +21,19 @@ class Rubrique
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
-    #[ORM\OneToMany(mappedBy: 'rubrique', targetEntity: Produit::class)]
-    private $produit;
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'rubriques')]
+    private ?self $parent = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'sous_rubrique')]
-    private $sous_rubrique;
+    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'parent')]
+    private Collection $rubriques;
+
+    #[ORM\OneToMany(targetEntity: Produit::class, mappedBy: 'rubrique')]
+    private Collection $produits;
 
     public function __construct()
     {
-        $this->produit = new ArrayCollection();
-        $this->sous_rubrique = new ArrayCollection();
+        $this->rubriques = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,64 +65,77 @@ class Rubrique
         return $this;
     }
 
-    /**
-     * @return Collection<int, Produit>
-     */
-    public function getProduit(): Collection
+    public function getParent(): ?self
     {
-        return $this->produit;
+        return $this->parent;
     }
 
-    public function addProduit(Produit $produit): self
+    public function setParent(?self $parent): static
     {
-        if (!$this->produit->contains($produit)) {
-            $this->produit[] = $produit;
-            $produit->setRubrique($this);
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getRubriques(): Collection
+    {
+        return $this->rubriques;
+    }
+
+    public function addRubrique(self $rubrique): static
+    {
+        if (!$this->rubriques->contains($rubrique)) {
+            $this->rubriques->add($rubrique);
+            $rubrique->setParent($this);
         }
 
         return $this;
     }
 
-    public function removeProduit(Produit $produit): self
+    public function removeRubrique(self $rubrique): static
     {
-        if ($this->produit->removeElement($produit)) {
+        if ($this->rubriques->removeElement($rubrique)) {
             // set the owning side to null (unless already changed)
-            if ($produit->getRubrique() === $this) {
-                $produit->setRubrique(null);
+            if ($rubrique->getParent() === $this) {
+                $rubrique->setParent(null);
             }
         }
 
         return $this;
     }
 
-    public function getSousRubrique(): ?self
+    public function __toString()
     {
-        return $this->sous_rubrique;
+        return $this->libelle;
     }
 
-    public function setSousRubrique(?self $sous_rubrique): self
+    /**
+     * @return Collection<int, Produit>
+     */
+    public function getProduits(): Collection
     {
-        $this->sous_rubrique = $sous_rubrique;
-
-        return $this;
+        return $this->produits;
     }
 
-    public function addSousRubrique(self $sousRubrique): self
+    public function addProduit(Produit $produit): static
     {
-        if (!$this->sous_rubrique->contains($sousRubrique)) {
-            $this->sous_rubrique[] = $sousRubrique;
-            $sousRubrique->setSousRubrique($this);
+        if (!$this->produits->contains($produit)) {
+            $this->produits->add($produit);
+            $produit->setRubrique($this);
         }
 
         return $this;
     }
 
-    public function removeSousRubrique(self $sousRubrique): self
+    public function removeProduit(Produit $produit): static
     {
-        if ($this->sous_rubrique->removeElement($sousRubrique)) {
+        if ($this->produits->removeElement($produit)) {
             // set the owning side to null (unless already changed)
-            if ($sousRubrique->getSousRubrique() === $this) {
-                $sousRubrique->setSousRubrique(null);
+            if ($produit->getRubrique() === $this) {
+                $produit->setRubrique(null);
             }
         }
 

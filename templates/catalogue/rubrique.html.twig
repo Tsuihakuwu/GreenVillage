@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rubriques{% endblock %}
+
+{% block body %}
+<h1 class="flex justify-center w-full font-kadwa uppercase font-bold text-3xl">{{rubrique.libelle}}</h1>
+{% for s_rubrique in rubrique.rubriques %}
+    <div>
+        <a href="{{ path("app_produits", { rubrique: s_rubrique.id }) }}">{{ s_rubrique.libelle }}</a>
+    </div>
+{% endfor %}
+
+{% endblock %}

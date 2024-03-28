@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail article{% endblock %}
+
+{% block body %}
+
+<h1 class="flex justify-center w-full font-kadwa uppercase font-bold text-3xl">{{ produit.libelle }}</h1>
+<div>
+    {{ produit.reference }}
+    {{ produit.image }}
+    {{ produit.description }}
+    {{ produit.prixunitaire }}
+</div>
+
+{% endblock %}

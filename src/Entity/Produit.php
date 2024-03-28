@@ -42,14 +42,15 @@ class Produit
     #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'produits')]
     private $fournisseur;
 
-    #[ORM\ManyToOne(targetEntity: Rubrique::class, inversedBy: 'produit')]
-    private $rubrique;
-
     #[ORM\OneToMany(targetEntity: LigneCommande::class, mappedBy: 'produit')]
     private Collection $ligneCommandes;
 
     #[ORM\OneToMany(targetEntity: LigneLivraison::class, mappedBy: 'produit')]
     private Collection $ligneLivraisons;
+
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Rubrique $rubrique = null;
 
     public function __construct()
     {
@@ -170,18 +171,6 @@ class Produit
         return $this;
     }
 
-    public function getRubrique(): ?Rubrique
-    {
-        return $this->rubrique;
-    }
-
-    public function setRubrique(?Rubrique $rubrique): self
-    {
-        $this->rubrique = $rubrique;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, LigneCommande>
      */
@@ -238,6 +227,18 @@ class Produit
                 $ligneLivraison->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRubrique(): ?Rubrique
+    {
+        return $this->rubrique;
+    }
+
+    public function setRubrique(?Rubrique $rubrique): static
+    {
+        $this->rubrique = $rubrique;
 
         return $this;
     }

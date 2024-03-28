@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CatalogueController!{% endblock %}
+{% block title %}Catalogue{% endblock %}
 
 {% block body %}
-
+<h1 class="flex justify-center w-full font-kadwa uppercase font-bold text-3xl">Categories</h1>
 {% for rubrique in rubriques %}
     <div>
-        <a href="">{{ rubrique.nom }}</a>
+        <a href="{{ path("app_sous_rubrique", { rubrique: rubrique.id }) }}">{{ rubrique.libelle }}</a>
     </div>
 {% endfor %}
 
