@@ -1,44 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
-{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
-	<form method="post">
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+	<h1 class="flex justify-center w-full font-koulen text-2xl">Connexion</h1>
+	<div class="flex w-full my-5 place-content-center">
+		<form method="post">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
 
-		{% if app.user %}
-			<div class="">
-				Connecté en tant que 
-				{{ app.user.userIdentifier }},
-				<a href="{{ path('app_logout') }}">Déconnexion</a>
+			{% if app.user %}
+				<div class="">
+					Connecté en tant que
+					{{ app.user.userIdentifier }},
+					<a href="{{ path('app_logout') }}">Déconnexion</a>
+				</div>
+			{% else %}
+
+				<div class="my-3">
+					<label for="inputEmail">Email</label>
+					<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5" autocomplete="email" required autofocus>
+				</div>
+				<div class="my-3">
+					<label for="inputPassword">Password</label>
+					<input type="password" name="password" id="inputPassword" class="border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5" autocomplete="current-password" required>
+				</div>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<div class="my-3 text-center">
+					<label>
+						<input type="checkbox" name="_remember_me">
+						Se rappeler de moi
+					</label>
+				</div>
+				<button class="my-5 border border-gray-500 text-sm rounded-lg focus:ring-gray-800 focus:border-gray-800 block w-full p-2.5" type="submit">
+					Connexion
+				</button>
+
+				<div class="text-center">
+					<p class="">Pas encore de compte ?</p>
+					<a class="underline" href="{{path('app_register')}}">Inscrivez vous !</a>
+				</div>
 			</div>
-		{% else %}
-		<h1 class="">Connexion</h1>
-		<label for="inputEmail">Email</label>
-		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="" autocomplete="email" required autofocus>
-		<label for="inputPassword">Password</label>
-		<input type="password" name="password" id="inputPassword" class="" autocomplete="current-password" required>
-
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-		<div class="checkbox mb-3">
-			<label>
-				<input type="checkbox" name="_remember_me">
-				Se rappeler de moi
-			</label>
-		</div>
-
-		<button class="btn btn-lg btn-primary" type="submit">
-			Connexion
-		</button>
-
-		<div class="">
-			<p class="">Pas encore de compte ?</p>
-			<a class="" href="{{path('app_register')}}">Inscrivez vous !</a>
-		</div>
-	</form>
-    {% endif %}
+		</form>
+	{% endif %}
 {% endblock %}

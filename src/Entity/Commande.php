@@ -30,7 +30,7 @@ class Commande
     #[ORM\Column(type: 'string', length: 255)]
     private $reference_facture;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $date_facture;
 
     #[ORM\Column(type: 'date')]
@@ -57,19 +57,16 @@ class Commande
     #[ORM\Column(type: 'string', length: 255)]
     private $livraison_ville;
 
-    #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'client')]
-    private $client;
+    #[ORM\OneToMany(targetEntity: LigneCommande::class, mappedBy: 'commande')]
+    private Collection $ligneCommandes;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Livraison::class)]
-    private $livraisons;
-
-    #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'commande')]
-    private $produits;
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $client = null;
 
     public function __construct()
     {
-        $this->livraisons = new ArrayCollection();
-        $this->produits = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -245,71 +242,44 @@ class Commande
         return $this;
     }
 
-    public function getClient(): ?Client
-    {
-        return $this->client;
-    }
-
-    public function setClient(?Client $client): self
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, Livraison>
+     * @return Collection<int, LigneCommande>
      */
-    public function getLivraisons(): Collection
+    public function getLigneCommandes(): Collection
     {
-        return $this->livraisons;
+        return $this->ligneCommandes;
     }
 
-    public function addLivraison(Livraison $livraison): self
+    public function addLigneCommande(LigneCommande $ligneCommande): static
     {
-        if (!$this->livraisons->contains($livraison)) {
-            $this->livraisons[] = $livraison;
-            $livraison->setCommande($this);
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes->add($ligneCommande);
+            $ligneCommande->setCommande($this);
         }
 
         return $this;
     }
 
-    public function removeLivraison(Livraison $livraison): self
+    public function removeLigneCommande(LigneCommande $ligneCommande): static
     {
-        if ($this->livraisons->removeElement($livraison)) {
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
             // set the owning side to null (unless already changed)
-            if ($livraison->getCommande() === $this) {
-                $livraison->setCommande(null);
+            if ($ligneCommande->getCommande() === $this) {
+                $ligneCommande->setCommande(null);
             }
         }
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Produit>
-     */
-    public function getProduits(): Collection
+    public function getClient(): ?Users
     {
-        return $this->produits;
+        return $this->client;
     }
 
-    public function addProduit(Produit $produit): self
+    public function setClient(?Users $client): static
     {
-        if (!$this->produits->contains($produit)) {
-            $this->produits[] = $produit;
-            $produit->addCommande($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduit(Produit $produit): self
-    {
-        if ($this->produits->removeElement($produit)) {
-            $produit->removeCommande($this);
-        }
+        $this->client = $client;
 
         return $this;
     }

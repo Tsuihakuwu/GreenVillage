@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -27,22 +28,21 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez entrez un mot de passe',
+                        'message' => '_error_reg_pwempty_',
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Votre mot de passe doit comprendre au minimum {{ limit }} characteres',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => '_error_reg_pwshort_',
                         'max' => 50,
                     ]),
                 ],
             ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Inscription'])
         ;
     }
 

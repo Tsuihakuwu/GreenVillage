@@ -45,16 +45,16 @@ class Produit
     #[ORM\ManyToOne(targetEntity: Rubrique::class, inversedBy: 'produit')]
     private $rubrique;
 
-    #[ORM\ManyToMany(targetEntity: Commande::class, inversedBy: 'produits')]
-    private $commande;
+    #[ORM\OneToMany(targetEntity: LigneCommande::class, mappedBy: 'produit')]
+    private Collection $ligneCommandes;
 
-    #[ORM\ManyToMany(targetEntity: Livraison::class, inversedBy: 'produits')]
-    private $livraison;
+    #[ORM\OneToMany(targetEntity: LigneLivraison::class, mappedBy: 'produit')]
+    private Collection $ligneLivraisons;
 
     public function __construct()
     {
-        $this->commande = new ArrayCollection();
-        $this->livraison = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
+        $this->ligneLivraisons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -183,49 +183,61 @@ class Produit
     }
 
     /**
-     * @return Collection<int, Commande>
+     * @return Collection<int, LigneCommande>
      */
-    public function getCommande(): Collection
+    public function getLigneCommandes(): Collection
     {
-        return $this->commande;
+        return $this->ligneCommandes;
     }
 
-    public function addCommande(Commande $commande): self
+    public function addLigneCommande(LigneCommande $ligneCommande): static
     {
-        if (!$this->commande->contains($commande)) {
-            $this->commande[] = $commande;
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes->add($ligneCommande);
+            $ligneCommande->setProduit($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function removeLigneCommande(LigneCommande $ligneCommande): static
     {
-        $this->commande->removeElement($commande);
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneCommande->getProduit() === $this) {
+                $ligneCommande->setProduit(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Livraison>
+     * @return Collection<int, LigneLivraison>
      */
-    public function getLivraison(): Collection
+    public function getLigneLivraisons(): Collection
     {
-        return $this->livraison;
+        return $this->ligneLivraisons;
     }
 
-    public function addLivraison(Livraison $livraison): self
+    public function addLigneLivraison(LigneLivraison $ligneLivraison): static
     {
-        if (!$this->livraison->contains($livraison)) {
-            $this->livraison[] = $livraison;
+        if (!$this->ligneLivraisons->contains($ligneLivraison)) {
+            $this->ligneLivraisons->add($ligneLivraison);
+            $ligneLivraison->setProduit($this);
         }
 
         return $this;
     }
 
-    public function removeLivraison(Livraison $livraison): self
+    public function removeLigneLivraison(LigneLivraison $ligneLivraison): static
     {
-        $this->livraison->removeElement($livraison);
+        if ($this->ligneLivraisons->removeElement($ligneLivraison)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneLivraison->getProduit() === $this) {
+                $ligneLivraison->setProduit(null);
+            }
+        }
 
         return $this;
     }

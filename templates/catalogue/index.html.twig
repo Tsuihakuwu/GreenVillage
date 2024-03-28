@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalogueController!{% endblock %}
+
+{% block body %}
+
+{% for rubrique in rubriques %}
+    <div>
+        <a href="">{{ rubrique.nom }}</a>
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme registrationForm 'tailwind_2_layout.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="flex justify-center w-full font-koulen text-2xl">Inscription</h1>
+	<div class="flex w-full my-5 place-content-center">
+		{% for flash_error in app.flashes('verify_email_error') %}
+			<div class="" role="alert">{{ flash_error }}</div>
+		{% endfor %}
+
+		{{ form_errors(registrationForm) }}
+
+		{{ form_start(registrationForm) }}
+
+		<div class="mb-5">
+			{{ form_label(registrationForm.email, "Email") }}
+			{{ form_widget(registrationForm.email) }}
+			{{ form_errors(registrationForm.email) }}
+		</div>
+		<div class="mb-5">
+			{{ form_label(registrationForm.plainPassword, "Mot de passe") }}
+			{{ form_widget(registrationForm.plainPassword) }}
+			{{ form_errors(registrationForm.plainPassword) }}
+		</div>
+		<div class="mb-5">
+			{{ form_label(registrationForm.agreeTerms, "J\'accepte les conditions d'utilisation",)  }}
+			{{ form_widget(registrationForm.agreeTerms) }}
+			{{ form_errors(registrationForm.agreeTerms) }}
+		</div>
+
+		{{ form_widget(registrationForm.save) }}
+
+		{{ form_end(registrationForm) }}
+	</div>
+{% endblock %}

@@ -21,15 +21,12 @@ class Livraison
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $date_livraison;
 
-    #[ORM\ManyToOne(targetEntity: Commande::class, inversedBy: 'livraisons')]
-    private $commande;
-
-    #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'livraison')]
-    private $produits;
+    #[ORM\OneToMany(targetEntity: LigneLivraison::class, mappedBy: 'livraison')]
+    private Collection $ligneLivraisons;
 
     public function __construct()
     {
-        $this->produits = new ArrayCollection();
+        $this->ligneLivraisons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -61,40 +58,31 @@ class Livraison
         return $this;
     }
 
-    public function getCommande(): ?Commande
-    {
-        return $this->commande;
-    }
-
-    public function setCommande(?Commande $commande): self
-    {
-        $this->commande = $commande;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, Produit>
+     * @return Collection<int, LigneLivraison>
      */
-    public function getProduits(): Collection
+    public function getLigneLivraisons(): Collection
     {
-        return $this->produits;
+        return $this->ligneLivraisons;
     }
 
-    public function addProduit(Produit $produit): self
+    public function addLigneLivraison(LigneLivraison $ligneLivraison): static
     {
-        if (!$this->produits->contains($produit)) {
-            $this->produits[] = $produit;
-            $produit->addLivraison($this);
+        if (!$this->ligneLivraisons->contains($ligneLivraison)) {
+            $this->ligneLivraisons->add($ligneLivraison);
+            $ligneLivraison->setLivraison($this);
         }
 
         return $this;
     }
 
-    public function removeProduit(Produit $produit): self
+    public function removeLigneLivraison(LigneLivraison $ligneLivraison): static
     {
-        if ($this->produits->removeElement($produit)) {
-            $produit->removeLivraison($this);
+        if ($this->ligneLivraisons->removeElement($ligneLivraison)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneLivraison->getLivraison() === $this) {
+                $ligneLivraison->setLivraison(null);
+            }
         }
 
         return $this;

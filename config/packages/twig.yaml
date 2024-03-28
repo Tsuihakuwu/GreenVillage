@@ -2,6 +2,8 @@ twig:
     file_name_pattern: '*.twig'
     globals:
         image_dir : '/img/'
+        tailwind_dir : '/templates/tailwind'
+        form_themes: ['tailwind_2_layout.html.twig']
 
 when@test:
     twig:
